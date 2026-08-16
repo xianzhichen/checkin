@@ -1,0 +1,16 @@
+name: KeepAlive
+
+on:
+  schedule:
+    # 每月 1 号和 15 号自动运行一次
+    - cron: '0 0 1,15 * *'
+  workflow_dispatch:
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: gautamkrishnar/keepalive-workflow@v2
